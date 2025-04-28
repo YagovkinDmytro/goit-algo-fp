@@ -5,3 +5,5 @@
 ### 2. Recursion. Creating a Pythagorean tree fractal using recursion
 
 ### 3. Trees, Dijkstra's algorithm
+
+### 4. Pyramid visualization
