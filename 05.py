@@ -1,7 +1,7 @@
 import uuid
-
 import networkx as nx
 import matplotlib.pyplot as plt
+from collections import deque
 
 
 class Node:
@@ -41,6 +41,42 @@ def draw_tree(tree_root):
   nx.draw(tree, pos=pos, labels=labels, arrows=False, node_size=2500, node_color=colors)
   plt.show()
 
+def dfs_tree(root):
+    visited_nodes = []
+    stack = [root]
+    while stack:
+        node = stack.pop()
+        if node is not None:
+            visited_nodes.append(node)
+            # Спочатку додаємо **правий** вузол, потім **лівий**, щоб лівий оброблявся першим
+            if node.right:
+                stack.append(node.right)
+            if node.left:
+                stack.append(node.left)
+    return visited_nodes 
+    
+
+def bfs_tree(root):
+    visited_nodes = []
+    queue = deque([root])
+    while queue:
+        node = queue.popleft()
+        if node is not None:
+            visited_nodes.append(node)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+    return visited_nodes
+
+
+def assign_colors(visited_nodes):
+    n = len(visited_nodes)
+    for i, node in enumerate(visited_nodes):
+        intensity = int(50 + (i / max(1, n-1)) * (255 - 50))
+        hex_color = f'#{intensity:02x}{intensity:02x}F0'
+        node.color = hex_color
+
 
 # Створення дерева
 root = Node(0)
@@ -51,4 +87,13 @@ root.right = Node(1)
 root.right.left = Node(3)
 
 #Відображення дерева
+dfs_visited_nodes = dfs_tree(root)
+bfs_visited_nodes = bfs_tree(root)
+
+assign_colors(dfs_visited_nodes)
+print("DFS traversal visualization:")
+draw_tree(root)
+
+assign_colors(bfs_visited_nodes)
+print("BFS traversal visualization:")
 draw_tree(root)

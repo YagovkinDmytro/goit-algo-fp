@@ -41,20 +41,7 @@ def draw_tree(tree_root):
   nx.draw(tree, pos=pos, labels=labels, arrows=False, node_size=2500, node_color=colors)
   plt.show()
 
-
-# # Створення дерева
-# root = Node(0)
-# root.left = Node(4)
-# root.left.left = Node(5)
-# root.left.right = Node(10)
-# root.right = Node(1)
-# root.right.left = Node(3)
-
-# #Відображення дерева
-# draw_tree(root)
-
-# Використовуючи як базу цей код, побудуйте функцію, що буде візуалізувати бінарну купу.
-
+# Використовуючи як базу цей код, побудуйте функцію, що буде візуалізувати бінарну купу
 class MinHeap:
     def __init__(self):
         self.heap = []
