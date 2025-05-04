@@ -6,7 +6,7 @@ def roll_dice():
     die2 = random.randint(1, 6)
     return die1 + die2
 
-N = 10000
+N = 1000
 sums_count = {}
 
 for _ in range(N):
