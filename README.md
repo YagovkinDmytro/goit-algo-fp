@@ -9,3 +9,5 @@
 4. Pyramid visualization
 
 5. Visualization of binary tree traversal
+
+6. Greedy algorithms and dynamic programming
