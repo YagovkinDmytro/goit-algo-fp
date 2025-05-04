@@ -21,8 +21,6 @@ probabilities = {}
 for sum_value, count in sums_count.items():
     probabilities[sum_value] = count / N
 
-print(probabilities)
-print(sums_count)
 data  = []
 for sum_value in sorted(probabilities.keys()):
     probability_percent = round(probabilities[sum_value] * 100, 2)
